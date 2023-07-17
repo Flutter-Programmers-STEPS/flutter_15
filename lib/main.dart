@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_15/button.dart';
+import 'package:flutter_15/grocery/screens/login/login_page.dart';
 import 'package:flutter_15/radiobutton.dart';
 import 'package:flutter_15/textwidget.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green
       ),
-      home: RadioExample(),
+      home: LoginPage(),
     );
   }
 }
