@@ -12,52 +12,80 @@ class _LoginPageState extends State<LoginPage> {
   var passController = TextEditingController();
   var email = "", password = "";
 
+  //form key
+  final _loginFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: TextField(
-              controller: emailController,
-              decoration: InputDecoration(border: OutlineInputBorder()),
+      body: Form(
+        key: _loginFormKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image(
+              image: AssetImage('assets/images/first_image.jpg'),
+              width: 200,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: TextField(
-              controller: passController,
-              decoration: InputDecoration(border: OutlineInputBorder()),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Forgot password?",
-                  )),
-            ),
-          ),
-          SizedBox(
-            height: 40,
-            width: 200,
-            child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    print(emailController.text + passController.text);
-                    email = emailController.text;
-                    password = passController.text;
-                  });
+
+            Image.network('https://logos-world.net/wp-content/uploads/2020/11/Swiggy-Logo.png'),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter email';
+                  }
+                  return null;
                 },
-                child: Text("Login")),
-          ),
-          Text(email)
-        ],
+                controller: emailController,
+                decoration: InputDecoration(
+                    label: Text("Email"),
+                    hintText: "Enter email",
+                    border: OutlineInputBorder()),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter password';
+                  }
+                  return null;
+                },
+                controller: passController,
+                decoration: InputDecoration(border: OutlineInputBorder()),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Forgot password?",
+                    )),
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              width: 200,
+              child: ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      if (_loginFormKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(SnackBar(content: Text("Success")));
+                      }
+                    });
+                  },
+                  child: Text("Login")),
+            ),
+            Text(email)
+          ],
+        ),
       ),
     );
   }
