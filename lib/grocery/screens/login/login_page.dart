@@ -27,8 +27,8 @@ class _LoginPageState extends State<LoginPage> {
               image: AssetImage('assets/images/first_image.jpg'),
               width: 200,
             ),
-
-            Image.network('https://logos-world.net/wp-content/uploads/2020/11/Swiggy-Logo.png'),
+            Image.network(
+                'https://logos-world.net/wp-content/uploads/2020/11/Swiggy-Logo.png'),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: TextFormField(
@@ -76,8 +76,35 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     setState(() {
                       if (_loginFormKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(SnackBar(content: Text("Success")));
+                        //   ScaffoldMessenger.of(context)
+                        //       .showSnackBar(SnackBar(content: Text("Success")));
+                        //
+
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text("Login here"),
+                              content: Text("Do you want to login"),
+                              actions: [
+                                ElevatedButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        Navigator.pop(context);
+                                      });
+                                    },
+                                    child: Text("Yes")),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        Navigator.pop(context);
+                                      });
+                                    },
+                                    child: Text("No"))
+                              ],
+                            );
+                          },
+                        );
                       }
                     });
                   },
