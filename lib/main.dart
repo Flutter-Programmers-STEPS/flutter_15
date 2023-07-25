@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_15/button.dart';
 import 'package:flutter_15/chatpage.dart';
 import 'package:flutter_15/grocery/screens/login/login_page.dart';
+import 'package:flutter_15/listpage.dart';
 import 'package:flutter_15/passwordtoggle.dart';
 import 'package:flutter_15/radiobutton.dart';
 import 'package:flutter_15/tabbar.dart';
@@ -40,19 +41,18 @@ class MyApp extends StatelessWidget {
               Tab(
                 child: Text("Calls"),
               ),
-              Tab(child: Text("ListView"),)
+              Tab(
+                child: Text("ListView"),
+              )
             ]),
           ),
-          body: TabBarView(
-              children: [
-                TabBar_Example1(),
-                PasswordToggle(),
-                ChatPage(),
-
-                DrawerPage(),
-                ListViewIcon(),
-
-              ]),
+          body: TabBarView(children: [
+            TabBar_Example1(),
+            PasswordToggle(),
+            ChatPage(),
+            DrawerPage(),
+            ListPageEx1(),
+          ]),
           drawer: Drawer(
             elevation: 100,
             child: Column(
