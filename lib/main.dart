@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_15/button.dart';
 import 'package:flutter_15/chatpage.dart';
+import 'package:flutter_15/gridviewexample.dart';
 import 'package:flutter_15/grocery/screens/login/login_page.dart';
 import 'package:flutter_15/listpage.dart';
 import 'package:flutter_15/passwordtoggle.dart';
 import 'package:flutter_15/radiobutton.dart';
 import 'package:flutter_15/tabbar.dart';
 import 'package:flutter_15/textwidget.dart';
+import 'package:flutter_15/toastexample1.dart';
 
 import 'drawerpage.dart';
 import 'listview.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.green),
       home: DefaultTabController(
-        length: 5,
+        length: 7,
         child: Scaffold(
           appBar: AppBar(
             elevation: 50,
@@ -43,6 +45,12 @@ class MyApp extends StatelessWidget {
               ),
               Tab(
                 child: Text("ListView"),
+              ),
+              Tab(
+                child: Text("GridView"),
+              ),
+              Tab(
+                child: Text("Toast"),
               )
             ]),
           ),
@@ -52,6 +60,8 @@ class MyApp extends StatelessWidget {
             ChatPage(),
             DrawerPage(),
             ListPageEx1(),
+            GridViewExample1(),
+            ToastEx1()
           ]),
           drawer: Drawer(
             elevation: 100,
