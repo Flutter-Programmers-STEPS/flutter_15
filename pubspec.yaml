@@ -38,6 +38,10 @@ dependencies:
   provider:
   intl:
   fluttertoast:
+  path_provider:
+  path:
+  sqflite: ^2.3.0
+
 
 dev_dependencies:
   flutter_test:

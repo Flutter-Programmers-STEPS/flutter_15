@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_15/button.dart';
-import 'package:flutter_15/chatpage.dart';
 import 'package:flutter_15/gridviewexample.dart';
-import 'package:flutter_15/grocery/screens/login/login_page.dart';
 import 'package:flutter_15/listpage.dart';
 import 'package:flutter_15/passwordtoggle.dart';
-import 'package:flutter_15/radiobutton.dart';
 import 'package:flutter_15/tabbar.dart';
-import 'package:flutter_15/textwidget.dart';
+import 'package:flutter_15/tableexample.dart';
 import 'package:flutter_15/toastexample1.dart';
 
 import 'drawerpage.dart';
-import 'listview.dart';
 
 main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -29,8 +24,8 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             elevation: 50,
-            title: Text("WhatsApp"),
-            bottom: TabBar(tabs: [
+            title: const Text("WhatsApp"),
+            bottom: const TabBar(tabs: [
               Tab(
                 child: Text("Chat"),
               ),
@@ -38,7 +33,7 @@ class MyApp extends StatelessWidget {
                 child: Text("Password"),
               ),
               Tab(
-                child: Text("Status"),
+                child: Text("Table"),
               ),
               Tab(
                 child: Text("Calls"),
@@ -54,21 +49,21 @@ class MyApp extends StatelessWidget {
               )
             ]),
           ),
-          body: TabBarView(children: [
+          body: const TabBarView(children: [
             TabBar_Example1(),
             PasswordToggle(),
-            ChatPage(),
+            TableEx1(),
             DrawerPage(),
             ListPageEx1(),
             GridViewExample1(),
             ToastEx1()
           ]),
-          drawer: Drawer(
+          drawer: const Drawer(
             elevation: 100,
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: CircleAvatar(
                     backgroundImage:
                         NetworkImage('https://picsum.photos/250?image=9'),
