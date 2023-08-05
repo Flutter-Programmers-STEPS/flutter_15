@@ -42,8 +42,34 @@ class SQLHelper {
     return database.query('records', orderBy: 'id');
   }
 
-// Update
-// Delete
 // Get all items
+
+  static Future<List<Map<String, dynamic>>> getIndividualItem(int id) async {
+    final database = await SQLHelper.createDatabase();
+    return database.query('records', where: 'id=?', limit: 1, whereArgs: [id]);
+  }
+
+// Update
+
+  static Future<int> updateRow(
+      int? id, String? title, String? description) async {
+    final database = await SQLHelper.createDatabase();
+    final editingRow = {
+      'title': title,
+      'description': description,
+      'createdAt': DateTime.now().toString()
+    };
+
+// update records set title='value', description='value', createdAt='TIME' where id=?;
+    final editedRowID = database.update('records', editingRow, where: 'id=?');
+    return editedRowID;
+  }
+
+// Delete
+
+  static Future<void> deleteRow(int id) async {
+    final database = await SQLHelper.createDatabase();
+    await database.delete('records', where: 'id=?', whereArgs: [id]);
+  }
 // Get item
 }
